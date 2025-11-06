@@ -1,14 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-
-const features = [
-  "Step-by-step automation roadmap for 2026",
-  "Assessment tools for your current tech stack",
-  "Cost optimization strategies and ROI calculator",
-  "Best practices from leading organizations",
-];
+import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   const [email, setEmail] = useState("");
@@ -16,52 +9,59 @@ export const CTASection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Email submitted:", email);
-    // TODO: Implement lead capture logic
   };
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-primary opacity-5" />
-      
+    <section className="py-24 md:py-32 relative overflow-hidden">
       <div className="container relative z-10 mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-card rounded-3xl shadow-elegant p-8 md:p-12 lg:p-16 border border-border">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
-                Ready to Transform Your Operations?
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Get your free 2026 Automation Readiness document and start your journey from disconnected tools to intelligent automation.
-              </p>
-            </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="space-y-8">
+            <h2 className="text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl leading-tight">
+              Start Your Automation Journey
+            </h2>
+            
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
+              Download our comprehensive 2026 Automation Readiness Assessment 
+              to evaluate your organization's preparedness for AI-powered transformation.
+            </p>
 
-            <div className="grid gap-6 md:grid-cols-2 mb-8">
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-muted-foreground">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto pt-4">
               <Input
                 type="email"
-                placeholder="Enter your work email"
+                placeholder="Work email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1"
+                className="flex-1 h-12 bg-background"
               />
-              <Button type="submit" variant="hero" size="lg" className="group">
-                Download Now
+              <Button type="submit" variant="premium" size="lg" className="h-12 px-8 group">
+                Get Assessment
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </form>
 
-            <p className="text-xs text-muted-foreground text-center mt-4">
-              Join 500+ operations leaders preparing for AI-first automation
-            </p>
+            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Detailed framework
+              </span>
+              <span className="hidden sm:block text-border">•</span>
+              <span className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Implementation guide
+              </span>
+              <span className="hidden sm:block text-border">•</span>
+              <span className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                ROI calculator
+              </span>
+            </div>
           </div>
         </div>
       </div>

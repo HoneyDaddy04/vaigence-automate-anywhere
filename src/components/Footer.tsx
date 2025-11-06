@@ -1,21 +1,90 @@
 export const Footer = () => {
   return (
-    <footer className="bg-muted/30 border-t border-border py-12">
+    <footer className="border-t border-border py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-              Vaigence
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Intelligent AI-powered automation for modern organizations
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold tracking-tight">Vaigence</h3>
+            <p className="text-sm text-muted-foreground font-light leading-relaxed">
+              Strategic automation consulting for forward-thinking organizations.
             </p>
           </div>
           
-          <div className="text-center md:text-right">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Vaigence. All rights reserved.
-            </p>
+          <div className="space-y-4">
+            <h4 className="text-sm font-medium">Services</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Automation Assessment
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Strategic Planning
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Implementation
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="text-sm font-medium">Company</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Approach
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="text-sm font-medium">Resources</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  2026 Assessment
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Case Studies
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Insights
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground font-light">
+            © {new Date().getFullYear()} Vaigence. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>

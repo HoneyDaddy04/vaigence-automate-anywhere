@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -68,9 +71,13 @@ export default {
       boxShadow: {
         elegant: "var(--shadow-elegant)",
         soft: "var(--shadow-soft)",
+        premium: "var(--shadow-premium)",
       },
       transitionTimingFunction: {
         smooth: "var(--transition-smooth)",
+      },
+      letterSpacing: {
+        tighter: '-0.02em',
       },
       borderRadius: {
         lg: "var(--radius)",
