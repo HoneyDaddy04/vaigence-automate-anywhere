@@ -20,9 +20,9 @@ const phases = [
 export const ApproachSection = () => {
   return (
     <section id="approach" className="py-24 md:py-32">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          <div className="sticky top-32">
+          <div>
             <h2 className="text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl mb-6 leading-tight">
               Proven Methodology
             </h2>

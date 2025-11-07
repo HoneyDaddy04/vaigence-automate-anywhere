@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
     <footer className="border-t border-border py-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <h3 className="text-xl font-semibold tracking-tight">Vaigence</h3>
@@ -56,18 +56,18 @@ export const Footer = () => {
             <h4 className="text-sm font-medium">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/resources" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Automation Resources
+                </a>
+              </li>
+              <li>
+                <a href="/resources#framework" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   2026 Assessment
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
-                  Insights
+                <a href="/resources#calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  ROI Calculator
                 </a>
               </li>
             </ul>

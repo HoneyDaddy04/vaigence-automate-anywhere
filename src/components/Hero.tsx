@@ -13,7 +13,7 @@ export const Hero = () => {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-hero">
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-6 md:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium shadow-soft">

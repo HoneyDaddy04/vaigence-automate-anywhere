@@ -24,7 +24,7 @@ const metrics = [
 export const ImpactSection = () => {
   return (
     <section id="impact" className="py-24 md:py-32 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="max-w-3xl mb-20">
           <h2 className="text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl mb-6 leading-tight">
             Delivering Measurable Results

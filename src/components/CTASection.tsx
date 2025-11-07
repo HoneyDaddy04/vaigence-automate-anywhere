@@ -13,7 +13,7 @@ export const CTASection = () => {
 
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-6 md:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <div className="space-y-8">
             <h2 className="text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl leading-tight">
