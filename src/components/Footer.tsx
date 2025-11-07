@@ -35,17 +35,17 @@ export const Footer = () => {
             <h4 className="text-sm font-medium">Company</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   About
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/#approach" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   Approach
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   Contact
                 </a>
               </li>
@@ -61,12 +61,12 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/resources#framework" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/resources#readiness-framework" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   2026 Assessment
                 </a>
               </li>
               <li>
-                <a href="/resources#calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/resources#roi-calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   ROI Calculator
                 </a>
               </li>

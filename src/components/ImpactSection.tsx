@@ -37,14 +37,17 @@ export const ImpactSection = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {metrics.map((metric, index) => (
-            <div key={index} className="space-y-3">
-              <div className="text-5xl font-semibold tracking-tighter">
+            <div
+              key={index}
+              className="group space-y-3 p-6 rounded-lg hover:bg-primary-light/20 transition-all duration-300 cursor-default"
+            >
+              <div className="text-5xl font-semibold tracking-tighter group-hover:scale-110 transition-transform duration-300 inline-block">
                 {metric.value}
               </div>
-              <div className="text-base font-medium">
+              <div className="text-base font-medium group-hover:translate-x-1 transition-transform duration-300">
                 {metric.label}
               </div>
-              <p className="text-sm text-primary-foreground/60 font-light leading-relaxed">
+              <p className="text-sm text-primary-foreground/60 font-light leading-relaxed group-hover:text-primary-foreground/80 transition-colors">
                 {metric.description}
               </p>
             </div>

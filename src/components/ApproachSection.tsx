@@ -34,11 +34,16 @@ export const ApproachSection = () => {
 
           <div className="space-y-12">
             {phases.map((phase, index) => (
-              <div key={index} className="relative pl-8 border-l-2 border-border pb-12 last:pb-0">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary" />
+              <div
+                key={index}
+                className="group relative pl-8 border-l-2 border-border hover:border-primary pb-12 last:pb-0 transition-all duration-300"
+              >
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary group-hover:scale-150 group-hover:shadow-elegant transition-all duration-300" />
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold tracking-tight">{phase.title}</h3>
-                  <p className="text-muted-foreground font-light leading-relaxed">
+                  <h3 className="text-xl font-semibold tracking-tight group-hover:text-primary transition-colors">
+                    {phase.title}
+                  </h3>
+                  <p className="text-muted-foreground font-light leading-relaxed group-hover:text-foreground transition-colors">
                     {phase.description}
                   </p>
                 </div>

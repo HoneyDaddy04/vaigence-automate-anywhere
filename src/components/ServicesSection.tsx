@@ -39,14 +39,16 @@ export const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 pb-12 md:pb-16 border-b border-border last:border-b-0"
+              className="group grid md:grid-cols-[120px_1fr] gap-6 md:gap-12 pb-12 md:pb-16 border-b border-border last:border-b-0 cursor-pointer hover:translate-x-2 transition-all duration-300"
             >
-              <div className="text-5xl md:text-6xl font-light text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-colors">
+              <div className="text-5xl md:text-6xl font-light text-muted-foreground/30 group-hover:text-primary/60 transition-all duration-300">
                 {service.number}
               </div>
               <div className="space-y-4">
-                <h3 className="text-2xl font-semibold tracking-tight">{service.title}</h3>
-                <p className="text-muted-foreground font-light leading-relaxed max-w-2xl">
+                <h3 className="text-2xl font-semibold tracking-tight group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground font-light leading-relaxed max-w-2xl group-hover:text-foreground transition-colors">
                   {service.description}
                 </p>
               </div>

@@ -33,7 +33,7 @@ const Resources = () => {
         </section>
 
         {/* Automation Readiness Framework */}
-        <section className="py-16 bg-muted/30">
+        <section id="readiness-framework" className="py-16 bg-muted/30">
           <div className="container mx-auto px-6 md:px-8 lg:px-12">
             <div className="max-w-5xl mx-auto">
               <div className="flex items-start gap-6 mb-8">
@@ -42,26 +42,25 @@ const Resources = () => {
                 </div>
                 <div>
                   <h2 className="text-3xl font-semibold tracking-tight mb-4">
-                    2026 Automation Readiness Framework
+                    2026 AI Automation Readiness Assessment
                   </h2>
                   <p className="text-lg text-muted-foreground font-light leading-relaxed mb-6">
-                    A comprehensive 40-page assessment framework designed for COOs and operations leaders 
-                    to evaluate organizational readiness for AI-powered automation transformation.
+                    A focused assessment framework for COOs and operations leaders to evaluate organizational readiness and identify your highest-impact AI automation opportunities.
                   </p>
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div className="space-y-6">
-                  <h3 className="text-xl font-semibold">What's Included</h3>
+                  <h3 className="text-xl font-semibold">6 Assessment Areas</h3>
                   <ul className="space-y-3">
                     {[
-                      "Current state assessment matrix across 12 operational dimensions",
-                      "Technology stack evaluation and integration readiness scoring",
-                      "Team capability assessment and skills gap analysis",
-                      "Process maturity evaluation with automation opportunity mapping",
-                      "Data infrastructure readiness checklist",
-                      "Change management preparedness framework"
+                      "Process Maturity: Identify AI automation-ready workflows",
+                      "Data Infrastructure: Evaluate integration readiness",
+                      "Team Readiness: Assess capability gaps and training needs",
+                      "Technology Stack: Score current tool compatibility",
+                      "ROI Potential: Calculate expected AI automation efficiency gains",
+                      "Change Management: Gauge organizational preparedness"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-muted-foreground">
                         <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0 text-primary" />
@@ -72,15 +71,15 @@ const Resources = () => {
                 </div>
 
                 <div className="space-y-6">
-                  <h3 className="text-xl font-semibold">Key Outcomes</h3>
+                  <h3 className="text-xl font-semibold">What You'll Get</h3>
                   <ul className="space-y-3">
                     {[
-                      "Comprehensive readiness score (0-100) across all dimensions",
-                      "Prioritized automation opportunity pipeline",
-                      "12-month transformation roadmap template",
-                      "Budget estimation framework with ROI projections",
-                      "Risk assessment and mitigation strategies",
-                      "Executive presentation template for stakeholder buy-in"
+                      "Overall readiness score (0-100) with benchmarks",
+                      "Top 5 AI automation opportunities ranked by ROI",
+                      "90-day quick-win roadmap template",
+                      "Budget estimation guide with cost examples",
+                      "Risk mitigation checklist",
+                      "Executive summary template for stakeholder buy-in"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-muted-foreground">
                         <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0 text-primary" />
@@ -92,7 +91,8 @@ const Resources = () => {
               </div>
 
               <div className="bg-card border border-border rounded-lg p-8">
-                <h3 className="text-xl font-semibold mb-4">Download the Framework</h3>
+                <h3 className="text-xl font-semibold mb-4">Download the Assessment</h3>
+                <p className="text-muted-foreground font-light mb-4">Complete in 15-20 minutes. Get your readiness score and personalized roadmap instantly.</p>
                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg">
                   <Input
                     type="email"
@@ -102,9 +102,12 @@ const Resources = () => {
                     required
                     className="flex-1"
                   />
-                  <Button type="submit" variant="premium" className="group">
+                  <Button
+                    type="submit"
+                    className="bg-primary hover:bg-emerald-600 text-white"
+                  >
                     <Download className="mr-2 h-4 w-4" />
-                    Download PDF
+                    Get Assessment
                   </Button>
                 </form>
               </div>
@@ -177,7 +180,10 @@ const Resources = () => {
                     required
                     className="flex-1"
                   />
-                  <Button type="submit" variant="premium" className="group">
+                  <Button 
+                    type="submit" 
+                    className="bg-primary hover:bg-emerald-600 text-white"
+                  >
                     <Download className="mr-2 h-4 w-4" />
                     Download Guide
                   </Button>
@@ -188,7 +194,7 @@ const Resources = () => {
         </section>
 
         {/* ROI Calculator */}
-        <section className="py-16 bg-muted/30">
+        <section id="roi-calculator" className="py-16 bg-muted/30">
           <div className="container mx-auto px-6 md:px-8 lg:px-12">
             <div className="max-w-5xl mx-auto">
               <div className="flex items-start gap-6 mb-8">
@@ -243,7 +249,10 @@ const Resources = () => {
                     required
                     className="flex-1"
                   />
-                  <Button type="submit" variant="premium" className="group">
+                  <Button 
+                    type="submit" 
+                    className="bg-primary hover:bg-emerald-600 text-white"
+                  >
                     <Download className="mr-2 h-4 w-4" />
                     Get Calculator
                   </Button>
@@ -254,7 +263,10 @@ const Resources = () => {
                 <p className="text-muted-foreground font-light mb-6">
                   Want personalized guidance on your automation strategy?
                 </p>
-                <Button variant="outline" size="lg">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-emerald-600 text-white"
+                >
                   Schedule a Consultation
                 </Button>
               </div>
