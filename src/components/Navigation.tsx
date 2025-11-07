@@ -15,11 +15,11 @@ export const Navigation = () => {
             <a href="/#services" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Services
             </a>
+            <a href="/use-cases" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Use Cases
+            </a>
             <a href="/#approach" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Our Approach
-            </a>
-            <a href="/#impact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Impact
             </a>
             <a href="/resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Resources

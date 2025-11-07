@@ -14,18 +14,18 @@ export const Footer = () => {
             <h4 className="text-sm font-medium">Services</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
                   Automation Assessment
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
-                  Strategic Planning
+                <a href="/use-cases" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Use Cases
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
-                  Implementation
+                <a href="/#approach" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+                  Our Approach
                 </a>
               </li>
             </ul>
