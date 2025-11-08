@@ -79,10 +79,10 @@ export const Footer = () => {
             © {new Date().getFullYear()} Vaigence. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+            <a href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
+            <a href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light">
               Terms of Service
             </a>
           </div>

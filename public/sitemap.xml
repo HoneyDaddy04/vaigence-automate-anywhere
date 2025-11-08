@@ -36,4 +36,20 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Privacy Policy Page -->
+  <url>
+    <loc>https://vaigence.com/privacy</loc>
+    <lastmod>2025-11-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms of Service Page -->
+  <url>
+    <loc>https://vaigence.com/terms</loc>
+    <lastmod>2025-11-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
