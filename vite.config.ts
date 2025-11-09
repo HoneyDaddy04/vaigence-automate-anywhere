@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/', // Use '/' for custom domain, or '/vaigence-automate-anywhere/' for GitHub Pages default URL
+  base: '/vaigence-automate-anywhere/', // For GitHub Pages default URL
   server: {
     host: "::",
     port: 8080,
