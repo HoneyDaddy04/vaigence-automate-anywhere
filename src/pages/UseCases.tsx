@@ -1,11 +1,19 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, CheckCircle2, AlertCircle, Zap, TrendingUp } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle, Zap, TrendingUp, ExternalLink } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const categories = [
   "All",
@@ -16,6 +24,39 @@ const categories = [
   "Customer Success",
   "IT & Infrastructure"
 ];
+
+const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
+  "Finance & Accounting": {
+    bg: "bg-blue-500/10",
+    text: "text-blue-700 dark:text-blue-400",
+    border: "border-blue-500/30"
+  },
+  "HR & Talent": {
+    bg: "bg-purple-500/10",
+    text: "text-purple-700 dark:text-purple-400",
+    border: "border-purple-500/30"
+  },
+  "Sales & Marketing": {
+    bg: "bg-pink-500/10",
+    text: "text-pink-700 dark:text-pink-400",
+    border: "border-pink-500/30"
+  },
+  "Operations": {
+    bg: "bg-orange-500/10",
+    text: "text-orange-700 dark:text-orange-400",
+    border: "border-orange-500/30"
+  },
+  "Customer Success": {
+    bg: "bg-emerald-500/10",
+    text: "text-emerald-700 dark:text-emerald-400",
+    border: "border-emerald-500/30"
+  },
+  "IT & Infrastructure": {
+    bg: "bg-slate-500/10",
+    text: "text-slate-700 dark:text-slate-400",
+    border: "border-slate-500/30"
+  }
+};
 
 const useCases = [
   {
@@ -309,12 +350,46 @@ const useCases = [
 ];
 
 const UseCases = () => {
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showCategories, setShowCategories] = useState(true);
+  const [selectedUseCase, setSelectedUseCase] = useState<typeof useCases[0] | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
 
-  const filteredUseCases = selectedCategory === "All" 
-    ? useCases 
-    : useCases.filter(useCase => useCase.category === selectedCategory);
+  const filteredUseCases = (selectedCategory === "All"
+    ? useCases
+    : useCases.filter(useCase => useCase.category === selectedCategory))
+    .sort((a, b) => a.category.localeCompare(b.category));
+
+  // Scroll to top when navigating to this page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [location.pathname]);
+
+  // Scroll to show first card below filter bar when category changes (but not on initial mount)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    setTimeout(() => {
+      if (gridRef.current) {
+        const element = gridRef.current;
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 180; // Position below nav + filter bar + small gap
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen">
@@ -357,19 +432,27 @@ const UseCases = () => {
             </div>
             {showCategories && (
               <div className="flex flex-wrap gap-3 justify-center pb-6">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                      selectedCategory === category
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
+                {categories.map((category) => {
+                  const colors = categoryColors[category];
+                  const isSelected = selectedCategory === category;
+                  const isAll = category === "All";
+
+                  return (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${
+                        isSelected
+                          ? isAll
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : `${colors?.bg} ${colors?.text} ${colors?.border}`
+                          : "bg-muted text-muted-foreground hover:bg-muted/80 border-border/50"
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -378,104 +461,150 @@ const UseCases = () => {
         {/* Use Cases Grid */}
         <section className="py-16">
           <div className="container mx-auto px-6 md:px-8 lg:px-12">
-            <div className="space-y-12">
-              {filteredUseCases.map((useCase) => (
-                <Card key={useCase.id} className="p-8 md:p-12 hover:shadow-lg transition-shadow">
-                  <div className="space-y-8">
-                    {/* Header */}
-                    <div className="space-y-4">
-                      <Badge variant="outline" className="text-xs font-medium">
-                        {useCase.category}
-                      </Badge>
-                      <h2 className="text-3xl font-semibold tracking-tight">
-                        {useCase.title}
-                      </h2>
-                    </div>
-
-                    {/* Problem */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                          <AlertCircle className="w-5 h-5 text-destructive" />
-                        </div>
-                        <h3 className="text-xl font-semibold">The Problem</h3>
-                      </div>
-                      <p className="text-muted-foreground font-light leading-relaxed pl-13">
-                        {useCase.problem}
-                      </p>
-                    </div>
-
-                    {/* Current Approach */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
-                          <ArrowRight className="w-5 h-5 text-muted-foreground" />
-                        </div>
-                        <h3 className="text-xl font-semibold">Current Approach</h3>
-                      </div>
-                      <p className="text-muted-foreground font-light leading-relaxed pl-13">
-                        {useCase.currentApproach}
-                      </p>
-                    </div>
-
-                    {/* Automation Solution */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Zap className="w-5 h-5 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-semibold">n8n Automation Solution</h3>
-                      </div>
-                      <p className="text-muted-foreground font-light leading-relaxed pl-13">
-                        {useCase.automationSolution}
-                      </p>
-                    </div>
-
-                    {/* Impact */}
-                    <div className="space-y-4 bg-muted/30 p-6 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <TrendingUp className="w-5 h-5 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-semibold">Measurable Impact</h3>
-                      </div>
-                      <div className="grid sm:grid-cols-2 gap-3 pl-13">
-                        {useCase.impact.map((item, index) => (
-                          <div key={index} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-muted-foreground font-light">
-                              {item}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Tools Used */}
-                    <div className="space-y-3 pt-4 border-t border-border">
-                      <h4 className="text-sm font-medium text-muted-foreground">Tools Integrated</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {useCase.tools.map((tool, index) => (
-                          <Badge key={index} variant="secondary" className="font-light">
-                            {tool}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-
-            {filteredUseCases.length === 0 && (
+            {filteredUseCases.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-muted-foreground font-light">
                   No use cases found in this category.
                 </p>
               </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" ref={gridRef}>
+                {filteredUseCases.map((useCase) => (
+                  <Card
+                    key={useCase.id}
+                    className="p-6 hover:shadow-lg transition-all cursor-pointer group border-border/50 hover:border-primary/30"
+                    onClick={() => setSelectedUseCase(useCase)}
+                  >
+                    <div className="space-y-4">
+                      {/* Category Badge */}
+                      <Badge
+                        variant="outline"
+                        className={`text-xs font-medium ${categoryColors[useCase.category]?.bg} ${categoryColors[useCase.category]?.text} ${categoryColors[useCase.category]?.border}`}
+                      >
+                        {useCase.category}
+                      </Badge>
+
+                      {/* Title */}
+                      <h3 className="text-lg font-semibold tracking-tight leading-tight group-hover:text-primary transition-colors">
+                        {useCase.title}
+                      </h3>
+
+                      {/* Key Stats Preview */}
+                      <div className="space-y-2 pt-2">
+                        {useCase.impact.slice(0, 3).map((stat, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                            <span className="text-sm text-muted-foreground font-light leading-snug">
+                              {stat}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Learn More */}
+                      <div className="flex items-center gap-2 text-sm text-primary font-medium pt-2 group-hover:gap-3 transition-all">
+                        <span>Learn more</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             )}
           </div>
         </section>
+
+        {/* Use Case Detail Dialog */}
+        <Dialog open={!!selectedUseCase} onOpenChange={() => setSelectedUseCase(null)}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            {selectedUseCase && (
+              <div className="space-y-6">
+                <DialogHeader>
+                  <Badge
+                    variant="outline"
+                    className={`text-xs font-medium w-fit mb-2 ${categoryColors[selectedUseCase.category]?.bg} ${categoryColors[selectedUseCase.category]?.text} ${categoryColors[selectedUseCase.category]?.border}`}
+                  >
+                    {selectedUseCase.category}
+                  </Badge>
+                  <DialogTitle className="text-2xl md:text-3xl font-semibold tracking-tight">
+                    {selectedUseCase.title}
+                  </DialogTitle>
+                </DialogHeader>
+
+                {/* Problem */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                      <AlertCircle className="w-5 h-5 text-destructive" />
+                    </div>
+                    <h3 className="text-lg font-semibold">The Problem</h3>
+                  </div>
+                  <p className="text-muted-foreground font-light leading-relaxed pl-13">
+                    {selectedUseCase.problem}
+                  </p>
+                </div>
+
+                {/* Current Approach */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                      <ArrowRight className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Current Approach</h3>
+                  </div>
+                  <p className="text-muted-foreground font-light leading-relaxed pl-13">
+                    {selectedUseCase.currentApproach}
+                  </p>
+                </div>
+
+                {/* Automation Solution */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">n8n Automation Solution</h3>
+                  </div>
+                  <p className="text-muted-foreground font-light leading-relaxed pl-13">
+                    {selectedUseCase.automationSolution}
+                  </p>
+                </div>
+
+                {/* Impact */}
+                <div className="space-y-4 bg-muted/30 p-6 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Measurable Impact</h3>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-3 pl-13">
+                    {selectedUseCase.impact.map((item, index) => (
+                      <div key={index} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-muted-foreground font-light">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tools Used */}
+                <div className="space-y-3 pt-4 border-t border-border">
+                  <h4 className="text-sm font-medium text-muted-foreground">Tools Integrated</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedUseCase.tools.map((tool, index) => (
+                      <Badge key={index} variant="secondary" className="font-light">
+                        {tool}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* CTA Section */}
         <section className="py-24 bg-muted/30">

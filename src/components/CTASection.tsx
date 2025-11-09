@@ -23,6 +23,7 @@ export const CTASection = () => {
 
             <EmailCapture
               buttonText="Get Assessment"
+              resourceName="2026 Automation Readiness Assessment"
               className="max-w-lg mx-auto pt-4"
             />
 

@@ -26,7 +26,11 @@ export default function About() {
               <p className="text-xl text-muted-foreground font-light leading-relaxed mb-8">
                 We're a team of operators, process improvement experts, and automation specialists with over 30 cumulative years of experience turning operational challenges into automated solutions.
               </p>
-              <a href="/#contact">
+              <a
+                href="https://calendar.app.google/Reuhsv1WCirVRF168"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button className="bg-primary hover:bg-emerald-600 text-white px-8 py-6 text-lg">
                   Schedule a Consultation
                 </Button>

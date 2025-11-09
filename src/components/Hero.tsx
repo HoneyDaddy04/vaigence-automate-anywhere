@@ -27,6 +27,7 @@ export const Hero = () => {
             <div className="animate-fade-in-up animation-delay-400">
               <EmailCapture
                 buttonText="Get Assessment"
+                resourceName="2026 Automation Readiness Assessment"
                 className="max-w-lg mx-auto pt-4"
               />
             </div>
