@@ -5,7 +5,6 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/vaigence/', // For GitHub Pages default URL
   server: {
     host: "::",
     port: 8080,
